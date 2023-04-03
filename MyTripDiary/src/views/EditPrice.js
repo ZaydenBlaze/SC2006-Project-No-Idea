@@ -17,6 +17,8 @@ const styles = StyleSheet.create({
         // This doesn't work. cant change the textinput styling for some reason
         size: 30,
         height: 100,
+        borderWidth: 3,
+        borderRadius: 0,
     },
     checkmarkStyle: {
         flexDirection: 'row',
@@ -30,16 +32,22 @@ export default function ({ navigation, route }) {
     return (
         <Layout>
             <View style={styles.container}>
-                <Text style={styles.textStyle}>Edit price: (Should show 10.00 for all trips for now. Value won't be able to be updated yet.)</Text>
-                <TextInput keyboardType='numeric' style={styles.textInputStyle}>{parseFloat(route.params.priceKey)}</TextInput>
+                <Text style={styles.textStyle}>Edit price: </Text>
+                <TextInput 
+                    keyboardType='numeric' 
+                    leftContent={
+                        <Text>$</Text> 
+                    } 
+                    style={styles.textInputStyle}>{parseFloat(route.params.priceKey)}
+                </TextInput>
                 <View style={styles.checkmarkStyle}>
-                    <Entypo onPress={() => navigation.goBack()} name="cross" size={40} color="black" />
-                    <Ionicons onPress={() => 
+                    <Entypo name="cross" onPress={() => navigation.goBack()} size={40} color="black" />
+                    <Ionicons name="checkmark" onPress={() => 
                         // Save value of edited price to firebase
 
                         // Navigate back
                         navigation.goBack()} 
-                        name="checkmark" size={40} color="black" /> 
+                        size={40} color="black" /> 
                 </View>
                 
 
