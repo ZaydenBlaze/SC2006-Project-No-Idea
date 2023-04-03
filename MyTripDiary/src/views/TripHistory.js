@@ -89,13 +89,11 @@ export default function ({ navigation }) {
     titleDate = "25 Feb 2023";
     sectionsArray.push({title: titleDate, data: dataArray});
 	
-    let price = 10; 
     return (
 		<Layout>
             <SectionList
                 sections={sectionsArray}
-                // TODO Edit below line "{priceKey: price}" section to pass the OneTrip price prop instead of current hardcoded price of $10
-                renderItem={({item}) => <TouchableHighlight onPress={() => navigation.navigate("EditPrice", {priceKey: price})} underlayColor="#baffde" style={styles.item}>{item}</TouchableHighlight>} 
+                renderItem={({item}) => <TouchableHighlight onPress={() => navigation.navigate("EditPrice", {priceKey: item.props.price})} underlayColor="#baffde" style={styles.item}>{item}</TouchableHighlight>} 
                 renderSectionHeader={({section}) => (
                     <Text style={styles.sectionHeader}>{section.title}</Text>
                 )}

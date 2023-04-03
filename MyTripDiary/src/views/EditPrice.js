@@ -31,7 +31,7 @@ export default function ({ navigation, route }) {
         <Layout>
             <View style={styles.container}>
                 <Text style={styles.textStyle}>Edit price: (Should show 10.00 for all trips for now. Value won't be able to be updated yet.)</Text>
-                <TextInput keyboardType='numeric' style={styles.textInputStyle}>{route.params.priceKey.toFixed(2)}</TextInput>
+                <TextInput keyboardType='numeric' style={styles.textInputStyle}>{parseFloat(route.params.priceKey)}</TextInput>
                 <View style={styles.checkmarkStyle}>
                     <Entypo onPress={() => navigation.goBack()} name="cross" size={40} color="black" />
                     <Ionicons onPress={() => 
