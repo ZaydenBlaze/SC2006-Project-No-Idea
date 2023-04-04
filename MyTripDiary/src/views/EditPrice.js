@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { TouchableHighlight, View, StyleSheet } from 'react-native';
 import { Layout, TextInput, Text } from 'react-native-rapi-ui';
 import { Ionicons, Entypo } from '@expo/vector-icons'; 
 
@@ -17,13 +17,11 @@ const styles = StyleSheet.create({
         // This doesn't work. cant change the textinput styling for some reason
         size: 30,
         height: 100,
-        borderWidth: 3,
-        borderRadius: 0,
     },
     checkmarkStyle: {
         flexDirection: 'row',
-        alignContent: 'center', 
-        paddingRight: 16,
+        justifyContent: 'space-around', 
+        paddingRight: 16,        
     },
 });
 
@@ -41,13 +39,22 @@ export default function ({ navigation, route }) {
                     style={styles.textInputStyle}>{parseFloat(route.params.priceKey)}
                 </TextInput>
                 <View style={styles.checkmarkStyle}>
-                    <Entypo name="cross" onPress={() => navigation.goBack()} size={40} color="black" />
-                    <Ionicons name="checkmark" onPress={() => 
-                        // Save value of edited price to firebase
+                    {/* Cross - Cancel */}
+                    <TouchableHighlight onPress={() => navigation.goBack()} underlayColor="#b3e5fc">
+                        <Entypo name="cross" size={60} color="black"/>
+                    </TouchableHighlight>
 
-                        // Navigate back
-                        navigation.goBack()} 
-                        size={40} color="black" /> 
+                    {/* Tick - Save changes */}
+                    <TouchableHighlight onPress={() => 
+                            // Save value of edited price to firebase
+
+                            // Navigate back
+                            navigation.goBack()}
+                        underlayColor="#b3e5fc">
+                        <Ionicons name="checkmark" size={60} color="black"/>
+                    </TouchableHighlight>
+                    
+                     
                 </View>
                 
 

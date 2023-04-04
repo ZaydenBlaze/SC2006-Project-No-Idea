@@ -14,10 +14,16 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(247,247,247,1.0)',
     },
     item: {
-        backgroundColor: '#00fb9a',
+        backgroundColor: '#81d4fa',
+        borderRadius: 20,
         padding: 16,  
         marginVertical: 8,
         marginHorizontal: 16,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 }, // ios?
+        shadowOpacity: 0.8, 
+        shadowRadius: 2, 
+        elevation: 4, // android?
     },
     itemContainer: {
         flex: 1,
@@ -93,7 +99,7 @@ export default function ({ navigation }) {
 		<Layout>
             <SectionList
                 sections={sectionsArray}
-                renderItem={({item}) => <TouchableHighlight onPress={() => navigation.navigate("EditPrice", {priceKey: item.props.price})} underlayColor="#baffde" style={styles.item}>{item}</TouchableHighlight>} 
+                renderItem={({item}) => <TouchableHighlight onPress={() => navigation.navigate("EditPrice", {priceKey: item.props.price})} underlayColor="#b3e5fc" style={styles.item}>{item}</TouchableHighlight>} 
                 renderSectionHeader={({section}) => (
                     <Text style={styles.sectionHeader}>{section.title}</Text>
                 )}
